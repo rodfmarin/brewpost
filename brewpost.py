@@ -26,7 +26,7 @@ def getTiltReadings(sleepseconds):
     return tiltHydrometer.temperature, tiltHydrometer.gravity
 
 
-readings = getTiltReadings()
+readings = getTiltReadings(10)
 
 payload = {
 "Timepoint": "=NOW()",
