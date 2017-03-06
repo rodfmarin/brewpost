@@ -29,11 +29,11 @@ def getTiltReadings(sleepseconds):
 readings = getTiltReadings()
 
 payload = {
-"Timepoint": "=NOW()"
-"SG": readings[1]
-"Temp": readings[0]
-"Color": tiltcolor.upper()
-"Beer": beerinprogress
+"Timepoint": "=NOW()",
+"SG": readings[1],
+"Temp": readings[0],
+"Color": tiltcolor.upper(),
+"Beer": beerinprogress,
 "Comment": ""
 }
 
