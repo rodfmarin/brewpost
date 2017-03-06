@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-python /home/brewpost/brewpost.py
+python /home/pi/brewpost/brewpost.py
