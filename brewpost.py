@@ -6,10 +6,10 @@ import TiltHydrometer
 tiltcolor = "Red"
 
 myurl = open("url","r")
-myurl = myurl.readline()
+myurl = myurl.readline().rstrip()
 
 beerinprogress = open("beerinprogress", "r")
-beerinprogress = beerinprogress.readline()
+beerinprogress = beerinprogress.readline().rstrip()
 
 def getTiltReadings(sleepseconds):
     # Connection to the Tilt takes a few seconds to get a reading
@@ -42,7 +42,14 @@ print mypayload
 def post_data(payload):
     requests.post(url=myurl, data=payload)
 
-post_data(mypayload)
+try:
+    post_data(mypayload)
+except Exception as e:
+    print e
+    raise
+
+
+
 
 
 #post_data = {'Timepoint':'=NOW()', 'SG':'0.6'}
