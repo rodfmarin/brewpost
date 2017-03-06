@@ -23,7 +23,7 @@ def getTiltReadings(sleepseconds):
 
     values = tiltHydrometer.getValue(tiltcolor)
 
-    return tiltHydrometer.temperature tiltHydrometer.gravity
+    return tiltHydrometer.temperature, tiltHydrometer.gravity
 
 
 readings = getTiltReadings()
