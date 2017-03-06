@@ -28,7 +28,7 @@ def getTiltReadings(sleepseconds):
 
 readings = getTiltReadings(10)
 
-payload = {
+mypayload = {
 "Timepoint": "=NOW()",
 "SG": readings[1],
 "Temp": readings[0],
@@ -37,11 +37,12 @@ payload = {
 "Comment": ""
 }
 
+print payload
 
 def post_data(payload):
     requests.post(url=myurl, data=payload)
 
-post_data(payload)
+post_data(mypayload)
 
 
 #post_data = {'Timepoint':'=NOW()', 'SG':'0.6'}
