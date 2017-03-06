@@ -1,22 +1,45 @@
 import requests
+import time
 import TiltHydrometer
 
+
+tiltcolor = "Red"
 
 myurl = open("url","r")
 myurl = myurl.readline()
 
-tiltHydrometer = TiltHydrometer.TiltHydrometerManager(False, 60, 40)
-tiltHydrometer.loadSettings()
-tiltHydrometer.start()
+beerinprogress = open("beerinprogress", "r")
+beerinprogress = beerinprogress.readline()
 
-for color in TiltHydrometer.TILTHYDROMETER_COLOURS:
-    print color + ": " + str(tiltHydrometer.getValue(color))
+def getTiltReadings(sleepseconds):
+    # Connection to the Tilt takes a few seconds to get a reading
+    # sleepseconds  ensures we will not  return 'None' by trying to read
+    # before a connection is established
+    # returns the Temp and SG readings from the tilt
+    tiltHydrometer = TiltHydrometer.TiltHydrometerManager(False, 60, 40)
+    tiltHydrometer.loadSettings()
+    tiltHydrometer.start()
+    time.sleep(sleepseconds)
 
-tiltHydrometer.stop()
+    values = tiltHydrometer.getValue(tiltcolor)
+
+    return tiltHydrometer.temperature tiltHydrometer.gravity
 
 
+readings = getTiltReadings()
+
+payload = {
+"Timepoint": "=NOW()"
+"SG": readings[1]
+"Temp": readings[0]
+"Color": tiltcolor.upper()
+"Beer": beerinprogress
+"Comment": ""
+}
 
 
+def post_data(payload):
+    requests.post(url=myurl, data=payload)
 
 
 
