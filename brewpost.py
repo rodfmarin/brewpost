@@ -23,13 +23,13 @@ def getTiltReadings(sleepseconds):
 
     values = tiltHydrometer.getValue(tiltcolor)
 
-    return values.temperature, values.gravity
+    return values.temperature, values.gravity, values.timestamp
 
 
 readings = getTiltReadings(10)
 
 mypayload = {
-"Timepoint": "=NOW()",
+"Timepoint": readings[3],
 "SG": readings[1],
 "Temp": readings[0],
 "Color": tiltcolor.upper(),
