@@ -37,7 +37,7 @@ mypayload = {
 "Comment": ""
 }
 
-print payload
+print mypayload
 
 def post_data(payload):
     requests.post(url=myurl, data=payload)
