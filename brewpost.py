@@ -41,7 +41,7 @@ payload = {
 def post_data(payload):
     requests.post(url=myurl, data=payload)
 
-
+post_data()
 
 
 #post_data = {'Timepoint':'=NOW()', 'SG':'0.6'}
